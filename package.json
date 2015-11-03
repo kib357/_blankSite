@@ -1,0 +1,12 @@
+{
+  "name": "blank-site",
+  "version": "0.0.1",
+  "devDependencies": {
+    "babel-loader": "latest",
+    "less": "^2.5.3",
+    "webpack": "latest"
+  },
+  "dependencies": {
+    "normalize.css": "latest"
+  }
+}

@@ -1,0 +1,7 @@
+.kenzo {
+  background: linear-gradient(90deg, #ffffff 25%, transparent 25%), linear-gradient(315deg, #ffffff 10%, transparent 10%) -14px -35px, linear-gradient(45deg, #ffffff 20%, transparent 10%) 14px -28px, linear-gradient(225deg, #ffffff 10%, transparent 10%) -14px 7px, linear-gradient(135deg, #ffffff 10%, transparent 10%) 21px 14px, linear-gradient(225deg, #ffffff 10%, transparent 10%) -7px 14px, linear-gradient(225deg, #ffffff 10%, transparent 10%) -14px 35px, linear-gradient(315deg, #ffffff 20%, transparent 10%) -7px -7px, linear-gradient(135deg, #ffffff 10%, transparent 10%) 14px 35px, linear-gradient(45deg, #ffffff 10%, transparent 10%) 21px -14px, linear-gradient(135deg, #ffffff 10%, transparent 10%) 21px 28px;
+  background-size: 28px 42px;
+}
+.kenzo-back {
+  background: linear-gradient(90deg, #9c27b0 0%, #e91e63 25%, #f44336 50%, #673ab7 75%, #009688 100%);
+}
