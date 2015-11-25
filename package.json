@@ -2,11 +2,16 @@
   "name": "blank-site",
   "version": "0.0.1",
   "devDependencies": {
+    "babel-core": "latest",
     "babel-loader": "latest",
-    "less": "^2.5.3",
+    "less": "latest",
     "webpack": "latest"
   },
   "dependencies": {
-    "normalize.css": "latest"
+    "normalize.css": "latest",
+    "extract-text-webpack-plugin": "latest",
+    "css-loader": "latest",   
+    "less-loader": "latest",
+    "file-loader": "latest"
   }
 }

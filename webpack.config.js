@@ -2,6 +2,8 @@
  * Created by kib357 on 03/11/15.
  */
 
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
     entry: "./src/js/app.js",
     output: {
@@ -10,10 +12,13 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader"},
+            { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader" },
             // LESS
-            { test: /\.less$/, loader: 'style!css!less' }
+            { test: /\.less$/, loader: ExtractTextPlugin.extract('css-loader!less-loader') }
         ]
     },
+    plugins: [
+        new ExtractTextPlugin('app.css')
+    ],
     devtool: "inline-source-map"
 };
