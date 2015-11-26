@@ -3,6 +3,7 @@
 1. npm install
 2. npm install webpack-dev-server -g
 3. webpack-dev-server --content-base ./dist --inline
+4. open http://localhost:8080
 
 ##Build production:
 
