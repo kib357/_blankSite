@@ -1,3 +1,5 @@
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
     entry: {
         "bundle": "./src/js/app.js"
@@ -10,8 +12,11 @@ module.exports = {
         loaders: [
             { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader" },
             // LESS
-            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' }
+            { test: /\.less$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader') }      
         ]
     },
-    devtool: "inline-source-map"
+    plugins: [
+        new ExtractTextPlugin('app.css')
+    ],
+    //devtool: "inline-source-map"
 };

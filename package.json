@@ -10,6 +10,7 @@
   "dependencies": {
     "normalize.css": "latest",
     "extract-text-webpack-plugin": "latest",
+    "style-loader": "latest", 
     "css-loader": "latest",   
     "less-loader": "latest",
     "file-loader": "latest"
