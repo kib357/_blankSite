@@ -4,6 +4,7 @@
 @accent-color: #009688;
 @lightText: rgba(0, 0, 0, .87);
 @darkText: rgba(255, 255, 255, 1);
+@darkSecondaryText: rgba(255, 255, 255, .7);
 @lightSecondaryText: rgba(0, 0, 0, .54);
 @paperColor: #fafafa;
 .box-shadow(@shadow) {
@@ -53,7 +54,7 @@ h3 {
 }
 
 @navbar-height: 50px;
-@nav-backgorund: #000;//#263238;
+@nav-backgorund: #000;
 @nav-color: rgba(255,255,255,.87);
 .navbar {
   position: fixed;
@@ -171,7 +172,7 @@ h3 {
   .caption {
     font-size: 22px;
     color: @lightSecondaryText;
-  }
+  } 
 }
 .bn-pattern {
   position: relative;
@@ -190,7 +191,7 @@ h3 {
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 0 -24px;
-  padding-bottom: 48px;
+  padding-top: 48px;
   .item {
     flex: 1 1;
     min-width: 250px;
@@ -230,6 +231,20 @@ section {
   h2 {
     text-align: center;
   }
+  .summary {        
+    p {  
+      max-width: 930px;
+      margin-left: auto;
+      margin-right: auto;     
+      text-align: center;      
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.6;
+      span {
+        font-weight: 400;
+      }
+    }    
+  }
 }
 
 .video {
@@ -245,4 +260,13 @@ section {
   // h2 {
   //   color: @darkText;
   // }
+}
+
+footer {
+  background-color: #263238;  
+  div.container {
+    padding: 14px 0;
+    color: @darkSecondaryText;
+    font-weight: 300;
+  }
 }
