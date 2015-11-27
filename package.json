@@ -5,7 +5,9 @@
     "babel-core": "latest",
     "babel-loader": "latest",
     "less": "latest",
-    "webpack": "latest"
+    "webpack": "latest",
+    "express": "latest",
+    "ws": "latest"
   },
   "dependencies": {
     "normalize.css": "latest",
