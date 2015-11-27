@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 var webpack = require("webpack");
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var fs = require('fs');
+var hbs = require('handlebars');
 var wss = null;
 
 var dev = process.argv[2] == 'dev';
@@ -27,29 +29,52 @@ var compiler = webpack({
     devtool: dev ? "inline-source-map" : ""
 });
 
-
-// compiler.run(function(err, stats) {
-// });
-// or
-compiler.watch({ // watch options:
-    aggregateTimeout: 300, // wait so long for more changes
-    //poll: true // use polling instead of native watchers
-    // pass a number to set the polling interval
-}, function (err, stats) {
-    // ...
-    console.log("Assets builded. Time: ", (stats.endTime - stats.startTime), 'ms');
-    if (err != null) {
-        console.log(err);
-    } else {
-        if (wss != null) {
-            wss.clients.forEach(function each(client) {
-                client.send('Please update');
-            });
-        }
+var reloadClient = function () {
+    if (wss != null) {
+        wss.clients.forEach(function each(client) {
+            client.send('Please update');
+        });
     }
-});
+}
 
-if (true || dev) {
+var compiling = false, recompile = false;
+var compileHTML = function () {
+    if (compiling) {
+        recompile = true;
+    } else {
+        recompile = false;
+        fs.readFile('./src/index.html', 'utf8', function (err, data) {
+            if (err) {
+                return console.log(err);
+            }
+            var template = hbs.compile(data);
+            var html = template({ "hello": "Hello, handlebars!!!" });
+            fs.writeFile('./dist/index.html', html, function (err) {
+                if (err) {
+                    return console.log(err);
+                } else {
+                    console.log("HTML compiled");
+                    reloadClient();
+                }
+                compiling = false;
+                if (recompile) {
+                    compileHTML();
+                }
+            })
+        });
+    }
+};
+
+var onWebpackEvent = function (err, stats) {
+    console.log("Assets builded. Time: ", (stats.endTime - stats.startTime), 'ms');
+        if (err != null) {
+            console.log(err);
+        } else {
+            reloadClient();
+        }
+};
+
+if (dev) {
     var express = require('express');
     var WebSocketServer = require('ws').Server;
 
@@ -61,4 +86,23 @@ if (true || dev) {
         console.log('Dev server listening at http://%s:%s and serving files from ./dist', host, port);
         wss = new WebSocketServer({ server: server });
     });
+
+    var watcher = require('chokidar').watch('./src/index.html', {
+        persistent: true,
+        ignoreInitial: true
+    });
+    watcher.on('change', function () {
+        compileHTML();
+    });
+    compileHTML();
+    
+    compiler.watch({ // watch options:
+        aggregateTimeout: 300, // wait so long for more changes
+        //poll: true // use polling instead of native watchers
+        // pass a number to set the polling interval
+    }, onWebpackEvent);
+    
+} else {
+    compileHTML();
+    compiler.run(onWebpackEvent);
 }
