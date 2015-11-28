@@ -1,0 +1,50 @@
+.goodies {
+  h2 {
+    text-align: center;
+  }
+  .summary {        
+    p {  
+      max-width: 930px;
+      margin-left: auto;
+      margin-right: auto;     
+      text-align: center;      
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.6;
+      span {
+        font-weight: 400;
+      }
+    }    
+  }
+}
+
+.goodies-list { 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 -24px;
+  padding-top: 48px;
+  .item {
+    flex: 1 1;
+    min-width: 250px;
+    margin: 24px;   
+    &.card {
+      padding: 24px 16px;
+      background-color: white;
+      border-radius: 2px;
+      .box-shadow(0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12););
+    }
+    h4 {
+      margin-top: 0;
+      text-transform: uppercase;
+      color: darken(@accent-color, 5);
+    }
+    p {
+      margin-bottom: 36px;
+      color: #444;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.6;      
+    }
+  }
+}

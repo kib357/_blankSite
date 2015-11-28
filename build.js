@@ -10,7 +10,7 @@ var dev = process.argv[2] == 'dev';
 // returns a Compiler instance
 var compiler = webpack({
     entry: {
-        "bundle": "./src/js/app.js"
+        "bundle": dev ? "./src/js/dev.js" : "./src/js/app.js"
     },
     output: {
         path: "./dist",
@@ -47,6 +47,13 @@ var compileHTML = function () {
             if (err) {
                 return console.log(err);
             }
+            //Registering partials
+            var partials = fs.readdirSync('./src/partials/');
+            partials.forEach(function (file) {
+                var partial = fs.readFileSync('./src/partials/' + file, 'utf-8');
+                hbs.registerPartial(file.replace('.html', ''), partial);
+            });
+            
             var template = hbs.compile(data);
             var html = template({ "hello": "Hello, handlebars!!!" });
             fs.writeFile('./dist/index.html', html, function (err) {
@@ -67,11 +74,11 @@ var compileHTML = function () {
 
 var onWebpackEvent = function (err, stats) {
     console.log("Assets builded. Time: ", (stats.endTime - stats.startTime), 'ms');
-        if (err != null) {
-            console.log(err);
-        } else {
-            reloadClient();
-        }
+    if (err != null) {
+        console.log(err);
+    } else {
+        reloadClient();
+    }
 };
 
 if (dev) {
@@ -87,7 +94,7 @@ if (dev) {
         wss = new WebSocketServer({ server: server });
     });
 
-    var watcher = require('chokidar').watch('./src/index.html', {
+    var watcher = require('chokidar').watch(['./src/partials/', './src/index.html'], {
         persistent: true,
         ignoreInitial: true
     });
@@ -95,13 +102,13 @@ if (dev) {
         compileHTML();
     });
     compileHTML();
-    
+
     compiler.watch({ // watch options:
         aggregateTimeout: 300, // wait so long for more changes
         //poll: true // use polling instead of native watchers
         // pass a number to set the polling interval
     }, onWebpackEvent);
-    
+
 } else {
     compileHTML();
     compiler.run(onWebpackEvent);
