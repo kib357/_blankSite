@@ -50,17 +50,41 @@ var compileHTML = function () {
             //Registering partials
             var partials = fs.readdirSync('./src/partials/');
             partials.forEach(function (file) {
-                var partial = fs.readFileSync('./src/partials/' + file, 'utf-8');
-                hbs.registerPartial(file.replace('.html', ''), partial);
+                try {
+                    var partial = fs.readFileSync('./src/partials/' + file, 'utf-8');
+                    hbs.registerPartial(file.replace('.html', ''), partial);
+                } catch (e) {
+                    console.error(e);
+                }
             });
-            
+
             var template = hbs.compile(data);
-            var html = template({ "hello": "Hello, handlebars!!!" });
+            var html = template({ "lang": "en" });
             fs.writeFile('./dist/index.html', html, function (err) {
                 if (err) {
                     return console.log(err);
                 } else {
-                    console.log("HTML compiled");
+                    console.log("Main HTML compiled");
+                    reloadClient();
+                }
+                compiling = false;
+                if (recompile) {
+                    compileHTML();
+                }
+            })
+
+            partials = fs.readdirSync('./src/partials/ru/');
+            partials.forEach(function (file) {
+                var partial = fs.readFileSync('./src/partials/' + file, 'utf-8');
+                hbs.registerPartial(file.replace('.html', ''), partial);
+            });
+
+            var html = template({ "lang": "ru" });
+            fs.writeFile('./dist/ru/index.html', html, function (err) {
+                if (err) {
+                    return console.log(err);
+                } else {
+                    console.log("Ru HTML compiled");
                     reloadClient();
                 }
                 compiling = false;
