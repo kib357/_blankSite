@@ -7,6 +7,13 @@ var wss = null;
 
 var dev = process.argv[2] == 'dev';
 
+hbs.registerHelper('ifEquals', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
+
 // returns a Compiler instance
 var compiler = webpack({
     entry: {
