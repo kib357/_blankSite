@@ -7,6 +7,13 @@ var wss = null;
 
 var dev = process.argv[2] == 'dev';
 
+hbs.registerHelper('ifEquals', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
+
 // returns a Compiler instance
 var compiler = webpack({
     entry: {
@@ -37,63 +44,52 @@ var reloadClient = function () {
     }
 }
 
-var compiling = false, recompile = false;
 var compileHTML = function () {
-    if (compiling) {
-        recompile = true;
-    } else {
-        recompile = false;
-        fs.readFile('./src/index.html', 'utf8', function (err, data) {
-            if (err) {
-                return console.log(err);
-            }
-            //Registering partials
-            var partials = fs.readdirSync('./src/partials/');
-            partials.forEach(function (file) {
-                try {
-                    var partial = fs.readFileSync('./src/partials/' + file, 'utf-8');
-                    hbs.registerPartial(file.replace('.html', ''), partial);
-                } catch (e) {
-                    console.error(e);
-                }
+    var data = fs.readFileSync('./src/index.html', 'utf8');
+    var locales = ['en', 'ru'];
+    locales.forEach(function (lang, index) {
+        var partialsBase = './src/partials/';
+        var loadPartials = function (path) {
+            return fs.readdirSync(path).filter(function (file) {
+                return fs.lstatSync(path + file).isFile() && file.indexOf('.html') > 0;
+            }).map(function (f) {
+                return {
+                    "name": f,
+                    "path": path
+                };
             });
-
-            var template = hbs.compile(data);
-            var html = template({ "lang": "en" });
-            fs.writeFile('./dist/index.html', html, function (err) {
-                if (err) {
-                    return console.log(err);
-                } else {
-                    console.log("Main HTML compiled");
-                    reloadClient();
-                }
-                compiling = false;
-                if (recompile) {
-                    compileHTML();
-                }
-            })
-
-            partials = fs.readdirSync('./src/partials/ru/');
-            partials.forEach(function (file) {
-                var partial = fs.readFileSync('./src/partials/' + file, 'utf-8');
-                hbs.registerPartial(file.replace('.html', ''), partial);
-            });
-
-            var html = template({ "lang": "ru" });
-            fs.writeFile('./dist/ru/index.html', html, function (err) {
-                if (err) {
-                    return console.log(err);
-                } else {
-                    console.log("Ru HTML compiled");
-                    reloadClient();
-                }
-                compiling = false;
-                if (recompile) {
-                    compileHTML();
-                }
-            })
+        }
+        //Registering partials
+        var partials = loadPartials(partialsBase);
+        if (lang !== 'en') {
+            partials = partials.concat(loadPartials(partialsBase + lang + '/'));
+        }
+        partials.forEach(function (file) {
+            var partial = fs.readFileSync(file.path + file.name, 'utf-8');
+            hbs.registerPartial(file.name.replace('.html', ''), partial);
         });
-    }
+
+        //Compiling
+        var template = hbs.compile(data);
+        var html = template({ "lang": lang });
+        
+        //Unregistering partials
+        partials.forEach(function (file) {
+            hbs.unregisterPartial(file.name.replace('.html', ''));
+        });
+
+        //Writing HTML
+        var workingDir = './dist/' + (lang === 'en' ? '' : lang + '/');
+        if (lang !== 'en' && !fs.existsSync(workingDir)) {
+            fs.mkdirSync(workingDir);
+        }
+        try {
+            fs.writeFileSync(workingDir + 'index.html', html);
+        } catch (err) {
+            console.log(err);
+        }
+    });
+    console.log("HTML compiled");
 };
 
 var onWebpackEvent = function (err, stats) {
@@ -106,6 +102,11 @@ var onWebpackEvent = function (err, stats) {
 };
 
 if (dev) {
+    var compileTm = null;
+    var compileHTMLDebounce = function (aggregateTimeout) {
+        clearTimeout(compileTm);
+        setTimeout(compileHTML, aggregateTimeout || 300);
+    }
     var express = require('express');
     var WebSocketServer = require('ws').Server;
 
@@ -122,10 +123,11 @@ if (dev) {
         persistent: true,
         ignoreInitial: true
     });
+    
     watcher.on('change', function () {
-        compileHTML();
+        compileHTMLDebounce();
     });
-    compileHTML();
+    compileHTMLDebounce();
 
     compiler.watch({ // watch options:
         aggregateTimeout: 300, // wait so long for more changes

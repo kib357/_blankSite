@@ -3,6 +3,7 @@
 1. npm install
 2. node build.js dev
 3. open http://localhost:8080
+4. profit!
 
 ##Build production:
 
