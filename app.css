@@ -538,9 +538,8 @@ th {
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.87);
 }
-.title .caption {
-  font-size: 22px;
-  color: rgba(0, 0, 0, 0.54);
+.title h3 {
+  margin: 14px 0;
 }
 footer {
   background-color: #263238;
