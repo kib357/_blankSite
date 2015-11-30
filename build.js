@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 var webpack = require("webpack");
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var fs = require('fs');
@@ -90,6 +91,7 @@ var compileHTML = function () {
         }
     });
     console.log("HTML compiled");
+    reloadClient();
 };
 
 var copyImg = function () {
@@ -102,6 +104,7 @@ var copyImg = function () {
         fs.writeFileSync(imgDest + file, data);
     });
     console.log("Images copied");
+    reloadClient();
 };
 
 var onWebpackEvent = function (err, stats) {

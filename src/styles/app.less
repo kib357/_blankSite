@@ -38,16 +38,19 @@ h3 {
 
 .container {
   @media (min-width: 768px) {
-    width: 750px;
+    width: 690px;
   }
   @media (min-width: 992px) {
-    width: 970px;
+    width: 910px;
   }
   @media (min-width: 1200px) {
-    width: 1170px;
+    width: 1110px;
   }
   @media (min-width: 1440px) {
-    width: 1410px;
+    width: 1350px;
+  }
+  @media (min-width: 1600px) {
+    width: 1510px;
   }
   margin-right: auto;
   margin-left: auto;
@@ -75,5 +78,102 @@ section {
     padding-top: 1px;
     padding-bottom: 1px;
     
+  }
+}
+
+.cards-list { 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 -24px; 
+  .item {
+    flex: 1 1;
+    min-width: 300px;
+    margin: 24px;   
+    &.card {     
+      background-color: white;
+      border-radius: 2px;
+      .box-shadow(0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12););
+      
+      .body,
+      .head {        
+        padding: 24px 16px;
+      }
+      
+      .body {
+        p {
+          margin: 0px;
+        }
+      }
+          
+      .head {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-height: 100px;        
+        padding: 24px 16px;
+        h3 {               
+          color: #fff;
+          margin-bottom: 0px;
+          font-size: 28px;
+          font-weight: 300;
+        }
+      }
+      
+      .actions {
+        padding: 8px 8px 8px 16px;
+      }
+    }   
+    p {
+      margin-bottom: 36px;
+      color: #444;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.6;      
+    }
+  }
+}
+
+button, input[type="button"] {
+  height: 36px;
+  min-width: 88px;
+  padding: 0 8px;
+  background: none;
+  border: none;
+  border-radius: 1px;
+  color: @lightText;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  outline: none !important;
+  &:disabled {
+    color: @lightBtnDisabled;
+    background-color: @lightBtnDisabledBg;
+    box-shadow: none !important;
+  }
+}
+
+.btn-flat {
+  margin: 0 8px;
+  box-shadow: none;
+  min-width: 64px;
+  color: @lightText;
+
+  &:hover {
+    background-color: rgba(153, 153, 153, .20);
+  }
+  &:focus {
+    //background-color: rgba(153, 153, 153, .40);
+  }
+  &:disabled {
+    background-color: transparent !important;
+    color: rgba(0, 0, 0, .26) !important;
+  }
+  &.first {
+    margin-left: -8px;
+  }
+  &.last {
+    margin-right: -8px;
   }
 }
