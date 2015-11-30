@@ -7,11 +7,11 @@ var wss = null;
 
 var dev = process.argv[2] == 'dev';
 
-hbs.registerHelper('ifEquals', function(v1, v2, options) {
-  if(v1 === v2) {
-    return options.fn(this);
-  }
-  return options.inverse(this);
+hbs.registerHelper('ifEquals', function (v1, v2, options) {
+    if (v1 === v2) {
+        return options.fn(this);
+    }
+    return options.inverse(this);
 });
 
 // returns a Compiler instance
@@ -92,6 +92,18 @@ var compileHTML = function () {
     console.log("HTML compiled");
 };
 
+var copyImg = function () {
+    var imgSrc = './src/img/', imgDest = './dist/img/';
+    if (!fs.existsSync(imgDest)) {
+        fs.mkdirSync(imgDest);
+    }
+    fs.readdirSync(imgSrc).forEach(function (file) {
+        var data = fs.readFileSync(imgSrc + file);
+        fs.writeFileSync(imgDest + file, data);
+    });
+    console.log("Images copied");
+};
+
 var onWebpackEvent = function (err, stats) {
     console.log("Assets builded. Time: ", (stats.endTime - stats.startTime), 'ms');
     if (err != null) {
@@ -123,10 +135,20 @@ if (dev) {
         persistent: true,
         ignoreInitial: true
     });
-    
+
+    var imgWatcher = require('chokidar').watch(['./src/img/'], {
+        persistent: true,
+        ignoreInitial: true
+    });
+
     watcher.on('change', function () {
         compileHTMLDebounce();
     });
+
+    imgWatcher.on('change', function () {
+        copyImg();
+    });
+    copyImg();
     compileHTMLDebounce();
 
     compiler.watch({ // watch options:
@@ -137,5 +159,6 @@ if (dev) {
 
 } else {
     compileHTML();
+    copyImg();
     compiler.run(onWebpackEvent);
 }
