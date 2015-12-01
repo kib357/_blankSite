@@ -1,3 +1,63 @@
-<div class="container">
-	<h2>Prices</h2>
+<div class="container pricing">
+	<h2>		
+		{{#ifEquals lang 'en'}}
+			Pricing
+		{{/ifEquals}}
+		{{#ifEquals lang 'ru'}}
+			Цены
+		{{/ifEquals}}
+	</h2>
+	<div class="cards-list">
+		<div class="item card">
+			<div class="head">
+				<h3>Basic</h3>
+			</div>
+			<div class="bn-pattern kenzo-back basic">
+				<div class="kenzo">
+				</div>
+			</div>
+			<div class="body">
+				<p>Up to 10 users</p>
+				<p>10Gb storage space</p>			
+			</div>
+			<div class="price">
+				<span>99$ / month</span>
+			</div>		
+		</div>
+		<div class="item card">
+			<div class="head">
+				<h3>Pro</h3>
+			</div>
+			<div class="bn-pattern kenzo-back pro">
+				<div class="kenzo">
+				</div>
+			</div>
+			<div class="body">
+				<p>Up to 30 users</p>
+				<p>30Gb storage space</p>			
+			</div>
+			<div class="price">
+				<span>199$ / month</span>
+			</div>		
+		</div>
+		<div class="item card">
+			<div class="head">
+				<h3>Enterprise</h3>
+			</div>
+			<div class="bn-pattern kenzo-back enterprise">
+				<div class="kenzo">
+				</div>
+			</div>
+			<div class="body">
+				<p>Up to 100 users</p>
+				<p>Unlimited storage space</p>			
+			</div>
+			<div class="price">
+				<span>499$ / month</span>
+			</div>		
+		</div>			
+	</div>
+	<div class="sign-up">
+		<button type="button">Sign up for free</button>
+	</div>
 </div>

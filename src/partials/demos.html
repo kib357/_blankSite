@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container demos">
 	<h2>		
 		{{#ifEquals lang 'en'}}
 			Demo configurations
@@ -8,38 +8,40 @@
 		{{/ifEquals}}
 	</h2>
 	<div class="cards-list">
-		<div class="item card">
-			<div class="head" style="background-color: #9c27b0;">
+		<div class="item card light-blue">
+			{{> browserSvg }}
+			<div class="head">
 				<h3>Система обработки заказов</h3>
 			</div>
 			<div class="body">
 				<p>Пример автоматизации работы химчистки</p>
 			</div>
 			<div class="actions">
-				<button type="button" class="btn-flat first">Показать</button>
+				<button type="button" class="btn-flat first">Вход</button>
 			</div>
 		</div>
-		<div class="item card">
-			<div class="head" style="background-color: #f44336;">
+		<div class="item card cyan">
+			{{> browserSvg }}
+			<div class="head">
 				<h3>Учет клиентов и сделок</h3>
 			</div>
 			<div class="body">
 				<p>База клиентов и документооборот в облаке</p>
 			</div>
 			<div class="actions">
-				<button type="button" class="btn-flat first">Показать</button>
+				<button type="button" class="btn-flat first">Вход</button>
 			</div>
 		</div>
-		<div class="item card">
-			<div class="head" style="background-color: #009688;">
+		<div class="item card indigo">
+			{{> browserSvg }}
+			<div class="head">
 				<h3>Биллинг</h3>
 			</div>
 			<div class="body">
 				<p>Личный кабинет для клиентов компании и администратора</p>
 			</div>
 			<div class="actions">
-				<button type="button" class="btn-flat first">Администратор</button>
-				<button type="button" class="btn-flat last">Клиент</button>
+				<button type="button" class="btn-flat first">Вход</button>
 			</div>
 		</div>
 	</div>

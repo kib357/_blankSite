@@ -1,0 +1,41 @@
+@import '../prefixes';
+
+.demos {
+	.cards-list {
+		.item {		
+			.st0 {
+				fill: #b0b0b0;
+				.transition(fill .5s linear);
+			}
+			&.light-blue:hover .st0 {
+				fill: #03A9F4;
+			}
+			&.cyan:hover .st0 {
+				fill: #00BCD4;
+			}
+			&.indigo:hover .st0 {
+				fill: #3F51B5;
+			}
+			h3 {
+				margin-top: 0;
+			}
+			&:hover {
+				button {
+					opacity: 1;
+				}
+			}
+			button {
+				color: #2196F3;
+				//opacity: 0;
+				.transition(opacity .3s linear);
+			}
+			.body {
+				padding-top: 0;
+				min-height: 74px;
+			}
+			.actions {
+				text-align: right;
+			}
+		}
+	}
+}

@@ -570,8 +570,52 @@ footer div.container {
 .video {
   background-color: #81C784;
 }
+.demos .cards-list .item .st0 {
+  fill: #b0b0b0;
+  -webkit-transition: fill 0.5s linear;
+  -o-transition: fill 0.5s linear;
+  transition: fill 0.5s linear;
+}
+.demos .cards-list .item.light-blue:hover .st0 {
+  fill: #03A9F4;
+}
+.demos .cards-list .item.cyan:hover .st0 {
+  fill: #00BCD4;
+}
+.demos .cards-list .item.indigo:hover .st0 {
+  fill: #3F51B5;
+}
+.demos .cards-list .item h3 {
+  margin-top: 0;
+}
+.demos .cards-list .item:hover button {
+  opacity: 1;
+}
+.demos .cards-list .item button {
+  color: #2196F3;
+  -webkit-transition: opacity 0.3s linear;
+  -o-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+}
+.demos .cards-list .item .body {
+  padding-top: 0;
+  min-height: 74px;
+}
+.demos .cards-list .item .actions {
+  text-align: right;
+}
 .technologies {
   background-color: #fff;
+}
+.pricing .sign-up {
+  padding: 24px 0 72px 0;
+  text-align: center;
+}
+.pricing .sign-up button {
+  height: 64px;
+  width: 200px;
+  background-color: #408fec;
+  color: #fff;
 }
 html,
 body {
@@ -673,15 +717,32 @@ section .container {
 .cards-list .item.card .body p {
   margin: 0px;
 }
+.cards-list .item.card .bn-pattern {
+  height: 56px;
+}
+.cards-list .item.card .kenzo-back.basic {
+  background: linear-gradient(90deg, #FF5722 0%, #e91e63 100%);
+}
+.cards-list .item.card .kenzo-back.pro {
+  background: linear-gradient(90deg, #e91e63 0%, #673ab7 100%);
+}
+.cards-list .item.card .kenzo-back.enterprise {
+  background: linear-gradient(90deg, #673ab7 0%, #009688 100%);
+}
+.cards-list .item.card .price {
+  padding: 14px;
+  text-align: center;
+  font-size: 18px;
+  color: #444;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
 .cards-list .item.card .head {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 100px;
   padding: 24px 16px;
 }
-.cards-list .item.card .head h3 {
-  color: #fff;
+.cards-list .item.card h3 {
   margin-bottom: 0px;
   font-size: 28px;
   font-weight: 300;
