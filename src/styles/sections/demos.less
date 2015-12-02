@@ -3,38 +3,57 @@
 .demos {
 	.cards-list {
 		.item {		
+			position: relative;
+			overflow: hidden;
+			min-height: 260px;	
+				
 			.st0 {
-				fill: #b0b0b0;
+				fill: #B0BEC5;
 				.transition(fill .5s linear);
+			}			
+			&:hover .st0 {
+					fill: #455A64 !important;
+				}
+			h3, p {
+				color: #fff !important;
 			}
-			&.light-blue:hover .st0 {
-				fill: #03A9F4;
+			&.oms {
+				background-color: #227586;										
 			}
-			&.cyan:hover .st0 {
-				fill: #00BCD4;
+			&.crm {
+				background-color: #2d566b;						
 			}
-			&.indigo:hover .st0 {
-				fill: #3F51B5;
-			}
-			h3 {
-				margin-top: 0;
-			}
+			&.billing {
+				background-color: #512DA8;
+			}										
 			&:hover {
-				button {
-					opacity: 1;
+				.action {
+					border-color: #fff;
+					.play {
+						opacity: 1;
+					}
 				}
 			}
-			button {
-				color: #2196F3;
-				//opacity: 0;
-				.transition(opacity .3s linear);
-			}
-			.body {
-				padding-top: 0;
-				min-height: 74px;
-			}
-			.actions {
-				text-align: right;
+			.action {
+				position: absolute;
+				bottom: -40px;
+				right: -40px;
+				width: 160px;
+				height: 160px;
+				border: 7px solid #ccc;
+				border-radius: 50%;
+				.transition(border-color .3s linear);
+				.play {
+					width: 0;
+					height: 0;
+					margin: 30px 0 0 55px;
+					border-style: solid;
+					border-width: 45px 0 45px 60px;
+					border-color: transparent transparent transparent #fff;
+					
+					opacity: 0;
+					.transition(opacity .3s linear);
+				}
 			}
 		}
 	}
