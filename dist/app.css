@@ -574,6 +574,7 @@ footer div.container {
   position: relative;
   overflow: hidden;
   min-height: 260px;
+  z-index: 0;
 }
 .demos .cards-list .item .st0 {
   fill: #B0BEC5;
@@ -583,6 +584,10 @@ footer div.container {
 }
 .demos .cards-list .item:hover .st0 {
   fill: #455A64 !important;
+}
+.demos .cards-list .item svg {
+  width: 100%;
+  background-color: #e0e0e0;
 }
 .demos .cards-list .item h3,
 .demos .cards-list .item p {
@@ -604,12 +609,13 @@ footer div.container {
   opacity: 1;
 }
 .demos .cards-list .item .action {
+  z-index: -1;
   position: absolute;
   bottom: -40px;
   right: -40px;
   width: 160px;
   height: 160px;
-  border: 7px solid #ccc;
+  border: 7px solid #999;
   border-radius: 50%;
   -webkit-transition: border-color 0.3s linear;
   -o-transition: border-color 0.3s linear;
