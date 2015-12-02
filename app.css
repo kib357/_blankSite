@@ -549,26 +549,50 @@ footer div.container {
   color: rgba(255, 255, 255, 0.7);
   font-weight: 300;
 }
+i.tooltip {
+  position: relative;
+  display: inline-block;
+  padding: 0 7px;
+  background-color: #E0F2F1;
+  border-radius: 3px;
+  cursor: help;
+}
+i.tooltip:after {
+  position: absolute;
+  display: block;
+  width: 280px;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  color: #FFF;
+  content: attr(data-tooltip);
+  opacity: 0;
+  padding: 3px 7px;
+  visibility: hidden;
+  transition: all 0.4s ease-in-out;
+}
+i.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
 .goodies h2 {
   text-align: center;
-}
-.goodies .summary p {
-  max-width: 930px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.6;
-}
-.goodies .summary p span {
-  font-weight: 400;
 }
 .goodies .cards-list {
   padding-top: 48px;
 }
 .video {
   background-color: #81C784;
+}
+.video .wrapper .player {
+  max-width: 650px;
+  margin: 0 auto;
+  height: 365px;
+  background-color: #444;
+}
+.features {
+  background-color: #fff;
 }
 .demos .cards-list .item {
   position: relative;
@@ -606,7 +630,7 @@ footer div.container {
   border-color: #fff;
 }
 .demos .cards-list .item:hover .action .play {
-  opacity: 1;
+  border-color: transparent transparent transparent #fff;
 }
 .demos .cards-list .item .action {
   z-index: -1;
@@ -615,7 +639,7 @@ footer div.container {
   right: -40px;
   width: 160px;
   height: 160px;
-  border: 7px solid rgba(255, 255, 255, 0.3);
+  border: 7px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   -webkit-transition: border-color 0.3s linear;
   -o-transition: border-color 0.3s linear;
@@ -627,17 +651,41 @@ footer div.container {
   margin: 30px 0 0 55px;
   border-style: solid;
   border-width: 45px 0 45px 60px;
-  border-color: transparent transparent transparent #fff;
-  opacity: 0;
-  -webkit-transition: opacity 0.3s linear;
-  -o-transition: opacity 0.3s linear;
-  transition: opacity 0.3s linear;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.1);
+  -webkit-transition: border-color 0.3s linear;
+  -o-transition: border-color 0.3s linear;
+  transition: border-color 0.3s linear;
 }
 .technologies {
   background-color: #fff;
 }
+.technologies img {
+  margin-bottom: 48px;
+}
+.pricing .cards-list .item .bn-pattern {
+  height: 56px;
+}
+.pricing .cards-list .item .kenzo-back.basic {
+  background: linear-gradient(90deg, #FF5722 0%, #e91e63 100%);
+}
+.pricing .cards-list .item .kenzo-back.pro {
+  background: linear-gradient(90deg, #e91e63 0%, #673ab7 100%);
+}
+.pricing .cards-list .item .kenzo-back.enterprise {
+  background: linear-gradient(90deg, #673ab7 0%, #009688 100%);
+}
+.pricing .cards-list .item .kenzo-back.gray {
+  background: linear-gradient(90deg, #ccc 0%, #aaa 100%);
+}
+.pricing .cards-list .item .price {
+  padding: 14px;
+  text-align: center;
+  font-size: 18px;
+  color: #444;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
 .pricing .sign-up {
-  padding: 24px 0 72px 0;
+  padding: 24px 0;
   text-align: center;
 }
 .pricing .sign-up button {
@@ -690,12 +738,12 @@ a {
 }
 @media (min-width: 768px) {
   .container {
-    width: 690px;
+    width: 750px;
   }
 }
 @media (min-width: 992px) {
   .container {
-    width: 910px;
+    width: 950px;
   }
 }
 @media (min-width: 1200px) {
@@ -725,24 +773,50 @@ a {
   top: -14px;
   bottom: 0;
 }
-section {
-  min-height: 600px;
-}
 section .container {
   padding-top: 1px;
-  padding-bottom: 1px;
+  padding-bottom: 72px;
+}
+section .container .summary p {
+  max-width: 930px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+section .container .summary p span,
+section .container .summary p a {
+  font-weight: 400;
+}
+section .container .summary p a {
+  color: #3F51B5;
 }
 .cards-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 0 -24px;
+}
+@media screen and (max-width: 930px) {
+  .cards-list {
+    align-items: center;
+    flex-direction: column;
+  }
+  .cards-list .item {
+    min-width: 420px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .cards-list .item {
+    min-width: 300px;
+  }
 }
 .cards-list .item {
   flex: 1 1;
   display: block;
-  min-width: 300px;
-  margin: 24px;
+  max-width: 420px;
+  margin: 24px 12px;
 }
 .cards-list .item.card {
   background-color: white;
@@ -754,25 +828,6 @@ section .container {
 .cards-list .item.card .body,
 .cards-list .item.card .head {
   padding: 24px 16px;
-}
-.cards-list .item.card .bn-pattern {
-  height: 56px;
-}
-.cards-list .item.card .kenzo-back.basic {
-  background: linear-gradient(90deg, #FF5722 0%, #e91e63 100%);
-}
-.cards-list .item.card .kenzo-back.pro {
-  background: linear-gradient(90deg, #e91e63 0%, #673ab7 100%);
-}
-.cards-list .item.card .kenzo-back.enterprise {
-  background: linear-gradient(90deg, #673ab7 0%, #009688 100%);
-}
-.cards-list .item.card .price {
-  padding: 14px;
-  text-align: center;
-  font-size: 18px;
-  color: #444;
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 .cards-list .item.card .head {
   display: flex;
@@ -844,5 +899,3 @@ input[type="button"]:disabled {
 .btn-flat.last {
   margin-right: -8px;
 }
-
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY3NzIiwic291cmNlUm9vdCI6IiJ9*/
