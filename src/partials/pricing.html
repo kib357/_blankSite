@@ -10,6 +10,35 @@
 	<div class="cards-list">
 		<div class="item card">
 			<div class="head">
+				<h3>Free</h3>
+			</div>
+			<div class="bn-pattern kenzo-back gray">
+				<div class="kenzo">
+				</div>
+			</div>
+			<div class="body">				
+				{{#ifEquals lang 'en'}}
+					<p>Only 3 users</p>
+					<p>100 Mb storage space</p>
+				{{/ifEquals}}
+				{{#ifEquals lang 'ru'}}
+					<p>Только 3 пользователя</p>
+					<p>100 Мб дискового пространства</p>
+				{{/ifEquals}}			
+			</div>
+			<div class="price">
+				<span>
+					{{#ifEquals lang 'en'}}
+						Free
+					{{/ifEquals}}
+					{{#ifEquals lang 'ru'}}
+						Бесплатно
+					{{/ifEquals}}
+				</span>
+			</div>		
+		</div>
+		<div class="item card">
+			<div class="head">
 				<h3>Basic</h3>
 			</div>
 			<div class="bn-pattern kenzo-back basic">
@@ -39,7 +68,7 @@
 		</div>
 		<div class="item card">
 			<div class="head">
-				<h3>Pro</h3>
+				<h3>Premium</h3>
 			</div>
 			<div class="bn-pattern kenzo-back pro">
 				<div class="kenzo">
@@ -77,11 +106,11 @@
 			<div class="body">				
 				{{#ifEquals lang 'en'}}
 					<p>Up to 100 users</p>
-					<p>Unlimited storage space</p>
+					<p>200Gb storage space</p>
 				{{/ifEquals}}
 				{{#ifEquals lang 'ru'}}
 					<p>До 100 пользователей</p>
-					<p>Неограниченное дисковое пространство</p>
+					<p>200Гб дискового пространства</p>
 				{{/ifEquals}}			
 			</div>
 			<div class="price">
@@ -94,7 +123,36 @@
 					{{/ifEquals}}
 				</span>
 			</div>		
-		</div>			
+		</div>	
+		<!--<div class="item card">
+			<div class="head">
+				<h3>Enterprise+</h3>
+			</div>
+			<div class="bn-pattern kenzo-back gray">
+				<div class="kenzo">
+				</div>
+			</div>
+			<div class="body">				
+				{{#ifEquals lang 'en'}}
+					<p>100+ users</p>
+					<p>Unlimited storage</p>
+				{{/ifEquals}}
+				{{#ifEquals lang 'ru'}}
+					<p>100+ пользователей</p>
+					<p>Неограниченное дисковое пространство</p>
+				{{/ifEquals}}			
+			</div>
+			<div class="price">
+				<span>
+					{{#ifEquals lang 'en'}}
+						$4990 - $20000
+					{{/ifEquals}}
+					{{#ifEquals lang 'ru'}}
+						499&nbsp;900&nbsp;&#8381; - 3&nbsp;000&nbsp;000&nbsp;&#8381;
+					{{/ifEquals}}
+				</span>
+			</div>		
+		</div>-->
 	</div>
 	<div class="sign-up">
 		<button type="button">
@@ -105,5 +163,15 @@
 				Зарегистрироваться
 			{{/ifEquals}}
 		</button>
+	</div>
+	<div class="summary">
+		<p>
+			{{#ifEquals lang 'en'}}
+				Need more users or box version? Contact us!
+			{{/ifEquals}}
+			{{#ifEquals lang 'ru'}}
+				Требуется больше пользователей или коробочная версия? Звоните!
+			{{/ifEquals}}
+		</p>
 	</div>
 </div>

@@ -13,23 +13,28 @@
 <body>
     <div class="navbar">
         <div class="container">
-        	<ul class="nav">
+        	<button type="button" class="navbar-toggle" id="nav-toggle">
+        		<span class="icon-bar"></span>
+        		<span class="icon-bar"></span>
+        		<span class="icon-bar"></span>
+        	</button>
+        	<ul class="nav collapse" id="nav">
         		<li class="logo">
         			<a href="#">
         				<div class="blank"></div>BLANK</a>
         		</li>
         		<li>
-        			<a href="#demo">
+        			<a href="#demo" class="index-link">
         					Демо
         			</a>
         		</li>
         		<li>
-        			<a href="#technology">				
+        			<a href="#technology" class="index-link">				
         					Технологии
         			</a>
         		</li>
         		<li>
-        			<a href="#pricing">
+        			<a href="#pricing" class="index-link">
         					Цены
         			</a>
         		</li>
@@ -44,7 +49,7 @@
         			</a>
         		</li>
         		<li>
-        			<a href="#">
+        			<a href="#" class="index-link">
         					Контакты
         			</a>
         		</li>
@@ -76,9 +81,64 @@
         	</div>
         	<div class="cards-list">
         		<div class="item">
-        			<h3>Снижение затрат на разработку</h3>
+        			<h3>Снижает затраты на разработку</h3>
         			<p>У нас готов пользовательский интерфейс, мы решили множество рутинных проблем обработки данных. Осталось запрограммировать
-        				логику работы вашего бизнеса.</p>
+        				логику работы вашей компании.</p>
+        		</div>
+        		<div class="item">
+        			<h3>Растёт вместе с компанией</h3>
+        			<p>Blank максимально расширяем, и будет легко расти и меняться вместе с вами. Кроме того, наша команда каждый день делает Blank лучше
+        				и добавляет в него новые возможности</p>
+        		</div>
+        		<div class="item">
+        			<h3>Экономит время</h3>
+        			<p>Мы поможем обеспечить кратчайшие сроки внедрения предоставив поддержку и услуги по разработке</p>
+        		</div>
+        	</div>
+        </div>    </section>
+    <section class="video">
+        <div class="container video">
+        	<h2>
+        			Прием заказов за 5 минут (будет видео)
+        	</h2>
+        	<div class="wrapper">
+        		<div class="player"></div>
+        	</div>
+        </div>    </section>
+    <section class="features">
+        <div class="container">
+        	<h2>		
+        			Особенности платформы
+        	</h2>
+        	<div class="cards-list">
+        		<div class="item">
+        			<h3>Любая структура данных</h3>
+        			<p>Неограниченное количество сущностей, множество типов данных и вариантов отображения. Любые типы связи данных: 1-1, 1-N,
+        				M-N
+        			</p>
+        		</div>
+        		<div class="item">
+        			<h3>4 варианта отображения данных</h3>
+        			<p>Таблицы, списки, карточки элементов, одиночный элемент &mdash; можно настроить любой вид для каждого хранилища (сущности).
+        				Настраиваемая зона предпросмотра.</p>
+        		</div>
+        		<div class="item">
+        			<h3>Фильтрация и сортировка</h3>
+        			<p>Фильтры по любым условиям настраиваются за несколько минут. Сортировка по предустановленныму полю в списке, мгновенная
+        				по любому полю в таблицах</p>
+        		</div>
+        		<div class="item">
+        			<h3>Всегда актуальные данные</h3>
+        			<p>Не нужно обновлять страницу в браузере &mdash; данные в Blank обновляются автоматически</p>
+        		</div>
+        		<div class="item">
+        			<h3>Центр уведомлений</h3>
+        			<p>Встроенная система для отправки сообщений пользователям</p>
+        		</div>
+        		<div class="item">
+        			<h3>Скорость и безопасность</h3>
+        			<p>Гибкая система разграничения прав доступа защитит ваши данные, а встроенный движок полнотекстового поиска сделает работу
+        				с ними быстрой и комфортной.</p>
         		</div>
         		<div class="item">
         			<h3>Встроенные телефония и почта</h3>
@@ -86,15 +146,18 @@
         				услуг связи, и пользуйтесь.</p>
         		</div>
         		<div class="item">
-        			<h3>Скорость и безопасность</h3>
-        			<p>Гибкая система разграничения прав доступа защитит ваши данные, а встроенный движок полнотекстового поиска сделает работу
-        				с ними быстрой и комфортной.</p>
+        			<h3>Настраиваемые формы входа и регистрации</h3>
+        			<p>Управление пользователями, регистрация, восстановление пароля и профиль работают сразу. А еще можно перенастроить любую форму</p>
+        		</div>
+        		<div class="item">
+        			<h3>Мультиязычность</h3>
+        			<p>Blank создан с поддержкой интернационализации из коробки</p>
+        		</div>
+        		<div class="item">
+        			<h3>Простое брендирование</h3>
+        			<p>Фирменные цвета и логотип задаются тремя строчками в конфигурации</p>
         		</div>
         	</div>
-        </div>    </section>
-    <section class="video">
-        <div class="container">
-        	<h2>Прием заказов за 5 минут (будет видео)</h2>
         </div>    </section>
     <section class="demo">
         <div class="container demos">
@@ -161,6 +224,21 @@
         			Технологии
         		</h2>
         	<img src="/img/technologies.svg" alt="technologies">
+        	<div class="summary">
+        		<p>
+        			<span>Blank</span> разработан на современных и широко известных языках программирования &mdash; <span>Go</span> и <span>JavaScript</span>.</br>
+        			Клиентская часть &mdash; <i class="tooltip" data-tooltip="Single Page Application &mdash; одностроначное веб-приложение">SPA</i>			на платформе <span>React JS</span>. Данные в приложении обновляются в режиме реального времени благодаря двунаправленному
+        			каналу связи с сервером по протоколу
+        			<span>WebSocket</span>.
+        			</br>
+        			При разработке на Blank не нужно изучать Go &mdash; все делается на JavaScript, для этого в сервер приложения встроен интерпретатор
+        			сценариев, поддерживающий стандарт <span>ECMAscript 5.1</span>.</br>
+        			Подробнее об API для разработчиков читайте в <a href="http://docs.getblank.net">документации</a>
+        		</p>
+        		<!--<p>Go был разработан компанией
+        			Google и официально представлен в 2009 году. Google и другие компании активно используют программы на Go в своей работе.
+        			JavaScript &mdash; самый распротраненный язык для написания сценариев, он используется почти каждым сайтом в сети Интернет</p>-->
+        	</div>
         </div>    </section>
     <section class="pricing">
         <div class="container pricing">
@@ -168,6 +246,24 @@
         			Цены
         	</h2>
         	<div class="cards-list">
+        		<div class="item card">
+        			<div class="head">
+        				<h3>Free</h3>
+        			</div>
+        			<div class="bn-pattern kenzo-back gray">
+        				<div class="kenzo">
+        				</div>
+        			</div>
+        			<div class="body">				
+        					<p>Только 3 пользователя</p>
+        					<p>100 Мб дискового пространства</p>
+        			</div>
+        			<div class="price">
+        				<span>
+        						Бесплатно
+        				</span>
+        			</div>		
+        		</div>
         		<div class="item card">
         			<div class="head">
         				<h3>Basic</h3>
@@ -188,7 +284,7 @@
         		</div>
         		<div class="item card">
         			<div class="head">
-        				<h3>Pro</h3>
+        				<h3>Premium</h3>
         			</div>
         			<div class="bn-pattern kenzo-back pro">
         				<div class="kenzo">
@@ -214,19 +310,42 @@
         			</div>
         			<div class="body">				
         					<p>До 100 пользователей</p>
-        					<p>Неограниченное дисковое пространство</p>
+        					<p>200Гб дискового пространства</p>
         			</div>
         			<div class="price">
         				<span>
         						29&nbsp;900&nbsp;&#8381; / месяц
         				</span>
         			</div>		
-        		</div>			
+        		</div>	
+        		<!--<div class="item card">
+        			<div class="head">
+        				<h3>Enterprise+</h3>
+        			</div>
+        			<div class="bn-pattern kenzo-back gray">
+        				<div class="kenzo">
+        				</div>
+        			</div>
+        			<div class="body">				
+        					<p>100+ пользователей</p>
+        					<p>Неограниченное дисковое пространство</p>
+        			</div>
+        			<div class="price">
+        				<span>
+        						499&nbsp;900&nbsp;&#8381; - 3&nbsp;000&nbsp;000&nbsp;&#8381;
+        				</span>
+        			</div>		
+        		</div>-->
         	</div>
         	<div class="sign-up">
         		<button type="button">
         				Зарегистрироваться
         		</button>
+        	</div>
+        	<div class="summary">
+        		<p>
+        				Требуется больше пользователей или коробочная версия? Звоните!
+        		</p>
         	</div>
         </div>    </section>
     <footer>

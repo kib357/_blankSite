@@ -7,6 +7,7 @@
 @import 'tooltip';
 @import './sections/goodies';
 @import './sections/video';
+@import './sections/features';
 @import './sections/demos';
 @import './sections/technologies';
 @import './sections/pricing';
@@ -51,10 +52,10 @@ a {
 
 .container {
   @media (min-width: 768px) {
-    width: 690px;
+    width: 750px;
   }
   @media (min-width: 992px) {
-    width: 910px;
+    width: 950px;
   }
   @media (min-width: 1200px) {
     width: 1110px;
@@ -112,14 +113,25 @@ section {
 
 .cards-list { 
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 0 -24px; 
+  justify-content: space-between;  
+  margin: 0 -24px;  
+  @media screen and ( max-width: 930px ){
+    align-items: center;
+    flex-direction: column;
+    .item {
+      min-width: 420px;
+    }
+  }
+  @media screen and ( max-width: 450px ){
+    .item {
+      min-width: 300px;
+    }
+  } 
   .item {
     flex: 1 1;
     display: block;
-    min-width: 300px;
-    margin: 24px;   
+    max-width: 420px;
+    margin: 24px 12px;   
     &.card {     
       background-color: white;
       border-radius: 2px;
