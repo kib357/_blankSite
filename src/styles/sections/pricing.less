@@ -1,6 +1,33 @@
 .pricing {
+	.cards-list {
+		.item {
+			.bn-pattern {
+				height: 56px;
+			}
+			
+			.kenzo-back.basic {
+				background: linear-gradient(90deg, #FF5722 0%, @md-pink-500 100%);
+			}
+		
+			.kenzo-back.pro {
+				background: linear-gradient(90deg, @md-pink-500 0%, @md-deep-purple-500 100%);
+			}
+			
+			.kenzo-back.enterprise {
+				background: linear-gradient(90deg, @md-deep-purple-500 0%, @md-teal-500 100%);
+			}
+			
+			.price {
+				padding: 14px;
+				text-align: center;
+				font-size: 18px;
+				color: #444;
+				border-top: 1px solid @lightDivider;
+			}
+		}
+	}
 	.sign-up {
-		padding: 24px 0 72px 0;
+		padding: 24px 0;
 		text-align: center;
 		button {
 			height: 64px;
