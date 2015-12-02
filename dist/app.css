@@ -615,7 +615,7 @@ footer div.container {
   right: -40px;
   width: 160px;
   height: 160px;
-  border: 7px solid #999;
+  border: 7px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   -webkit-transition: border-color 0.3s linear;
   -o-transition: border-color 0.3s linear;
@@ -642,7 +642,8 @@ footer div.container {
 }
 .pricing .sign-up button {
   height: 64px;
-  width: 200px;
+  padding-left: 32px;
+  padding-right: 32px;
   background-color: #408fec;
   color: #fff;
 }
@@ -666,6 +667,13 @@ h1 {
 }
 h2 {
   font-size: 48px;
+}
+h2:before {
+  display: block;
+  content: " ";
+  margin-top: -185px;
+  height: 185px;
+  visibility: hidden;
 }
 h3 {
   font-size: 20px;
@@ -836,3 +844,5 @@ input[type="button"]:disabled {
 .btn-flat.last {
   margin-right: -8px;
 }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY3NzIiwic291cmNlUm9vdCI6IiJ9*/

@@ -1,18 +1,24 @@
 <div class="container demos">
-	<h2>		
+	<h2 id="demo">		
 		{{#ifEquals lang 'en'}}
-			Demo configurations
+			Look Blank in action
 		{{/ifEquals}}
 		{{#ifEquals lang 'ru'}}
-			Демонстрационные конфигурации
+			Посмотрите Blank в действии
 		{{/ifEquals}}
 	</h2>
 	<div class="cards-list">
 		<a class="item card oms" href="http://oms.getblank.net" target="_blank">
 			{{> browserSvg }}			
-			<div class="body">
-				<h3>Система обработки заказов</h3>
-				<p>Пример автоматизации работы химчистки</p>
+			<div class="body">				
+				{{#ifEquals lang 'en'}}
+					<h3>Customer orders management</h3>
+					<p>Dry-cleaner's automaiton example</p>
+				{{/ifEquals}}
+				{{#ifEquals lang 'ru'}}
+					<h3>Система обработки заказов</h3>
+					<p>Пример автоматизации работы химчистки</p>
+				{{/ifEquals}}
 			</div>			
 			<div class="action">
 				<div class="play"></div>
@@ -20,9 +26,15 @@
 		</a>
 		<a class="item card crm" href="http://oms.getblank.net" target="_blank">
 			{{> browserSvg }}
-			<div class="body">
-				<h3>Учет клиентов и сделок</h3>
-				<p>База клиентов и документооборот в облаке</p>
+			<div class="body">				
+				{{#ifEquals lang 'en'}}
+					<h3>CRM</h3>
+					<p>Client accounts and deals management in the cloud</p>
+				{{/ifEquals}}
+				{{#ifEquals lang 'ru'}}
+					<h3>Учет клиентов и сделок</h3>
+					<p>База клиентов и документооборот в облаке</p>
+				{{/ifEquals}}
 			</div>
 			<div class="action">
 				<div class="play"></div>
@@ -31,8 +43,14 @@
 		<a class="item card billing" href="http://oms.getblank.net" target="_blank">
 			{{> browserSvg }}
 			<div class="body">
-				<h3>Биллинг</h3>
-				<p>Личный кабинет для клиентов компании и администратора</p>
+				{{#ifEquals lang 'en'}}
+					<h3>Billing</h3>
+					<p>Portal for company administrator and clients</p>
+				{{/ifEquals}}
+				{{#ifEquals lang 'ru'}}
+					<h3>Биллинг</h3>
+					<p>Личный кабинет для клиентов компании и администратора</p>
+				{{/ifEquals}}				
 			</div>
 			<div class="action">
 				<div class="play"></div>
