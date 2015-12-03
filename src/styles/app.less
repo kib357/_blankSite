@@ -18,6 +18,10 @@
   box-shadow: @shadow;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   font-family: RobotoDraft, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: @lightText;
@@ -48,6 +52,11 @@ h3 {
 
 a {
   text-decoration: none;  
+}
+p {
+  a {
+    color: #3F51B5;//#00acc1;
+  }
 }
 
 .container {
@@ -100,12 +109,9 @@ section {
         font-size: 18px;
         font-weight: 300;
         line-height: 1.6;
-        span, a {
+        span {
           font-weight: 400;
-        }
-        a {
-          color: #3F51B5;
-        }
+        }        
       }    
     } 
   }
