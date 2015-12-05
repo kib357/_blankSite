@@ -1,0 +1,106 @@
+.feedback {	
+	background-color: #37474F;
+	color: @darkText;
+	.container {
+		padding-bottom: 36px;
+	}
+	h3 {
+		font-size: 36px;
+		color: @darkText;
+		text-align: center;
+	}
+	.callback {
+		text-align: center;
+		input {
+			height: 36px;
+			width: 280px;
+			padding: 0 7px;
+			color: @lightText;
+		}
+		button {
+			margin-left: 14px;	
+		}
+	}	
+	address {
+		font-style: normal;
+	}
+	button {
+		background-color: #009688;
+		color: #fff;	
+		text-transform: none;	
+	}
+	
+	.feedback-form-modal {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		z-index: 3;
+		background-color: rgba(150,150,150,.7);
+		
+		&.show {
+			display: flex;
+		}
+		.feedback-form {
+			width: 400px;
+			padding: 24px 24px;
+			background-color: #263238;
+			
+			form {
+				input[type="text"],
+				textarea {
+					width: 100%;
+					margin-bottom: 14px;
+					color: @darkText;
+					background: transparent none;
+					border: none;
+					outline: none !important;
+					box-shadow: none;					
+    				border-bottom: 1px solid @darkDivider;
+					
+					padding: 8px 0 4px 0;
+					line-height: 20px;
+					border-radius: 0;
+					&:focus {
+						border-bottom: 1px solid @accent-color;
+						box-shadow: 0 1px 0 0 @accent-color;
+					}
+					//&:focus:invalid,
+					&.dirty:invalid {
+						border-color: @lightErrorText;
+						box-shadow: 0 1px 0 0 @lightErrorText;
+					}
+					&:disabled {
+						border-bottom: 1px dashed @lightDivider;
+					}
+					& ~ span.error {
+						display: inline-block;
+						position: absolute;
+						right: 0;
+						bottom: -1px;
+						color: @lightSecondaryText;
+						font-size: 12px;
+						opacity: 0;
+					}
+					&.dirty,
+					&:focus {
+						& ~ span.error {
+						opacity: 1;
+						}
+					}
+					&:invalid ~ span.error {
+						color: @lightErrorText;
+					}
+				}
+				
+				textarea {
+					resize: none;
+				}
+			}
+		}
+	}
+}

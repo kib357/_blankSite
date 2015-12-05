@@ -11,6 +11,7 @@
 @import './sections/demos';
 @import './sections/technologies';
 @import './sections/pricing';
+@import './sections/feedback';
 
 .box-shadow(@shadow) {
   -webkit-box-shadow: @shadow;
@@ -51,11 +52,17 @@ h3 {
 }
 
 a {
-  text-decoration: none;  
+  text-decoration: none;    
 }
 p {
   a {
     color: #3F51B5;//#00acc1;
+    &.dark {
+      color: #9FA8DA;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
