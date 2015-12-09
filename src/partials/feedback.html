@@ -1,31 +1,33 @@
 <div class="container">
-	<h3>
+	<h3 id="contacts">
 		{{#ifEquals lang 'en'}}
 			Need more users or box version?
 		{{/ifEquals}}
 		{{#ifEquals lang 'ru'}}
-			Требуется больше пользователей или коробочная версия?
+			Выберите удобный способ связи, расскажем подробности и ответим на вопросы
 		{{/ifEquals}}
 	</h3>
 	<div class="callback">
 		<form>
-			<input type="text" required>
-			<button type="submit" id="cb-">Перезвоните мне</button>
+			<input type="text" placeholder="{{#ifEquals lang 'en'}}Your phone{{/ifEquals}}{{#ifEquals lang 'ru'}}Номер телефона{{/ifEquals}}"
+			required>
+			<button type="submit" id="cb-">{{#ifEquals lang 'en'}}Order a call{{/ifEquals}}{{#ifEquals lang 'ru'}}Заказать звонок{{/ifEquals}}</button>
 		</form>
 	</div>
-	<div class="summary">
+	<!--<div class="summary">
 		<p>
 			Расскажем всё о Blank, посчитаем стоимость.
 		</p>
-	</div>
+	</div>-->
 	<address class="summary">
 		<br>
 		<p>
-			Звоните в любое время: <span>+7 (922) 477 2660</span> или <a href="#" id="feedback-show" class="dark">напишите нам</a>
+			Звоните в любое время: <span>+7 (922) 070 4022</span> или <a href="#" id="feedback-show" class="dark">напишите нам</a>
 		</p>
 	</address>
 	<div class="feedback-form-modal" id="feedback-modal">
 		<div class="feedback-form" id="feedback-form">
+			<h3>Напишите нам</h3>
 			<form action="">
 				<label for="feedback-name">Ваше имя</label>
 				<input type="text" id="feedback-name">

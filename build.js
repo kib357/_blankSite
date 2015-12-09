@@ -8,6 +8,8 @@ var wss = null;
 
 var dev = process.argv[2] == 'dev';
 
+var htmlFiles = ['index', 'platform', 'pricing'];
+
 hbs.registerHelper('ifEquals', function (v1, v2, options) {
     if (v1 === v2) {
         return options.fn(this);
@@ -46,7 +48,6 @@ var reloadClient = function () {
 }
 
 var compileHTML = function () {
-    var data = fs.readFileSync('./src/index.html', 'utf8');
     var locales = ['en', 'ru'];
     locales.forEach(function (lang, index) {
         var partialsBase = './src/partials/';
@@ -70,9 +71,11 @@ var compileHTML = function () {
             hbs.registerPartial(file.name.replace('.html', ''), partial);
         });
 
+        var compiled = {};
         //Compiling
-        var template = hbs.compile(data);
-        var html = template({ "lang": lang });
+        htmlFiles.forEach(function (file) {
+            compiled[file] = hbs.compile(fs.readFileSync('./src/' + file + '.html', 'utf8'))({ "lang": lang, "page": file }); 
+        });
         
         //Unregistering partials
         partials.forEach(function (file) {
@@ -85,7 +88,9 @@ var compileHTML = function () {
             fs.mkdirSync(workingDir);
         }
         try {
-            fs.writeFileSync(workingDir + 'index.html', html);
+            htmlFiles.forEach(function (file) {
+                fs.writeFileSync(workingDir + file + '.html', compiled[file]);    
+            });
         } catch (err) {
             console.log(err);
         }
@@ -134,7 +139,11 @@ if (dev) {
         wss = new WebSocketServer({ server: server });
     });
 
-    var watcher = require('chokidar').watch(['./src/partials/', './src/index.html'], {
+    var wathcFiles = htmlFiles.map(function (f) {
+        return './src/' + f + '.html';
+    })
+    wathcFiles.push('./src/partials/');
+    var watcher = require('chokidar').watch(wathcFiles, {
         persistent: true,
         ignoreInitial: true
     });

@@ -1,3 +1,5 @@
+@import './prefixes';
+
 .navbar {
   position: fixed;
   top: 0;
@@ -78,6 +80,9 @@
           img {
             height: 35px;
           }
+        }
+        &.active {
+          .box-shadow(inset 0 -4px 0 #009688);
         }
       }
       &.logo {

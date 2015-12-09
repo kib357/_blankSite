@@ -6,11 +6,11 @@
 	</button>
 	<ul class="nav collapse" id="nav">
 		<li class="logo">
-			<a href="#">
+			<a href="index.html">
 				<div class="blank"></div>BLANK</a>
 		</li>
-		<li>
-			<a href="#demo" class="index-link">
+		<!--<li>
+			<a href="/#demo" class="index-link">
 				{{#ifEquals lang 'en'}}
 					Demo
 				{{/ifEquals}}
@@ -20,7 +20,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="#technology" class="index-link">				
+			<a href="/#technology" class="index-link">				
 				{{#ifEquals lang 'en'}}
 					Technology
 				{{/ifEquals}}
@@ -28,14 +28,24 @@
 					Технологии
 				{{/ifEquals}}
 			</a>
-		</li>
+		</li>-->
 		<li>
-			<a href="#pricing" class="index-link">
+			<a href="pricing.html" class="{{#ifEquals page 'pricing'}}active{{/ifEquals}}">
 				{{#ifEquals lang 'en'}}
 					Pricing
 				{{/ifEquals}}
 				{{#ifEquals lang 'ru'}}
 					Цены
+				{{/ifEquals}}
+			</a>
+		</li>
+		<li>
+			<a href="platform.html" class="{{#ifEquals page 'platform'}}active{{/ifEquals}}">
+				{{#ifEquals lang 'en'}}
+					Blank platform
+				{{/ifEquals}}
+				{{#ifEquals lang 'ru'}}
+					О платформе
 				{{/ifEquals}}
 			</a>
 		</li>
@@ -60,7 +70,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="#" class="index-link">
+			<a href="#contacts" class="index-link">
 				{{#ifEquals lang 'en'}}
 					Contact us
 				{{/ifEquals}}

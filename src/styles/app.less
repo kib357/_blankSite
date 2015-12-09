@@ -29,6 +29,10 @@ html, body {
   background-color: @paperColor;
 }
 
+body {
+  padding-top: 50px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
   color: #444;
@@ -56,9 +60,9 @@ a {
 }
 p {
   a {
-    color: #3F51B5;//#00acc1;
+    color: #00897B;//#3F51B5;//#00acc1;
     &.dark {
-      color: #9FA8DA;
+      color: #4DB6AC;
     }
     &:hover {
       text-decoration: underline;
@@ -235,5 +239,58 @@ button, input[type="button"] {
   }
   &.last {
     margin-right: -8px;
+  }
+}
+
+form {
+  input[type="text"],
+  textarea {
+    width: 100%;
+    margin-bottom: 14px;
+    padding: 10px 0 8px 0;
+    color: @darkText;
+    background: transparent none;
+    border: none;
+    outline: none !important;
+    box-shadow: none;					
+    border-bottom: 1px solid #e1e1e1;
+    
+    font-weight: 300;
+    
+    border-radius: 0;
+    &:focus {
+      border-bottom: 1px solid @accent-color;
+      box-shadow: 0 1px 0 0 @accent-color;
+    }
+    //&:focus:invalid,
+    &.dirty:invalid {
+      border-color: @lightErrorText;
+      box-shadow: 0 1px 0 0 @lightErrorText;
+    }
+    &:disabled {
+      border-bottom: 1px dashed @lightDivider;
+    }
+    & ~ span.error {
+      display: inline-block;
+      position: absolute;
+      right: 0;
+      bottom: -1px;
+      color: @lightSecondaryText;
+      font-size: 12px;
+      opacity: 0;
+    }
+    &.dirty,
+    &:focus {
+      & ~ span.error {
+      opacity: 1;
+      }
+    }
+    &:invalid ~ span.error {
+      color: @lightErrorText;
+    }
+  }
+  
+  textarea {
+    resize: none;
   }
 }
