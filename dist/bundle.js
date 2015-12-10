@@ -113,6 +113,9 @@
 	            send = document.getElementById('feedback-submit'),
 	            modal = document.getElementById('feedback-modal'),
 	            form = document.getElementById('feedback-form');
+	        if (show == null || send == null || modal == null || form == null) {
+	            return;
+	        }
 	        show.addEventListener('click', function (e) {
 	            e.preventDefault();
 	            modal.classList.add('show');

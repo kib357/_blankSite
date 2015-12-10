@@ -510,6 +510,11 @@ th {
 .navbar ul.nav li a.nav-image-link img {
   height: 35px;
 }
+.navbar ul.nav li a.active {
+  -webkit-box-shadow: inset 0 -4px 0 #009688;
+  -moz-box-shadow: inset 0 -4px 0 #009688;
+  box-shadow: inset 0 -4px 0 #009688;
+}
 .navbar ul.nav li.logo {
   margin-left: -14px;
 }
@@ -527,7 +532,7 @@ th {
 }
 .title {
   text-align: center;
-  padding: 96px 24px 48px 24px;
+  padding: 48px 24px 48px 24px;
   background-color: white;
 }
 .title h1 {
@@ -736,6 +741,10 @@ i.tooltip:hover::after {
 .technologies img {
   margin-bottom: 48px;
 }
+.pricing .cards-list .item {
+  position: relative;
+  padding-bottom: 50px;
+}
 .pricing .cards-list .item .bn-pattern {
   height: 56px;
 }
@@ -752,6 +761,10 @@ i.tooltip:hover::after {
   background: linear-gradient(90deg, #ccc 0%, #aaa 100%);
 }
 .pricing .cards-list .item .price {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
   padding: 14px;
   text-align: center;
   font-size: 18px;
@@ -763,7 +776,7 @@ i.tooltip:hover::after {
   text-align: center;
 }
 .pricing .sign-up button {
-  height: 64px;
+  height: 48px;
   padding-left: 32px;
   padding-right: 32px;
   background-color: #408fec;
@@ -777,18 +790,17 @@ i.tooltip:hover::after {
   padding-bottom: 36px;
 }
 .feedback h3 {
-  font-size: 36px;
+  margin-top: 48px;
   color: #ffffff;
   text-align: center;
+  font-weight: 300;
 }
 .feedback .callback {
+  padding: 24px 0;
   text-align: center;
 }
 .feedback .callback input {
-  height: 36px;
   width: 280px;
-  padding: 0 7px;
-  color: rgba(0, 0, 0, 0.87);
 }
 .feedback .callback button {
   margin-left: 14px;
@@ -813,64 +825,20 @@ i.tooltip:hover::after {
   z-index: 3;
   background-color: rgba(150, 150, 150, 0.7);
 }
+.feedback .feedback-form-modal h3 {
+  margin-top: 0;
+  margin-bottom: 36px;
+}
+.feedback .feedback-form-modal p {
+  font-weight: 200;
+}
 .feedback .feedback-form-modal.show {
   display: flex;
 }
 .feedback .feedback-form-modal .feedback-form {
   width: 400px;
-  padding: 24px 24px;
+  padding: 24px;
   background-color: #263238;
-}
-.feedback .feedback-form-modal .feedback-form form input[type="text"],
-.feedback .feedback-form-modal .feedback-form form textarea {
-  width: 100%;
-  margin-bottom: 14px;
-  color: #ffffff;
-  background: transparent none;
-  border: none;
-  outline: none !important;
-  box-shadow: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 8px 0 4px 0;
-  line-height: 20px;
-  border-radius: 0;
-}
-.feedback .feedback-form-modal .feedback-form form input[type="text"]:focus,
-.feedback .feedback-form-modal .feedback-form form textarea:focus {
-  border-bottom: 1px solid #009688;
-  box-shadow: 0 1px 0 0 #009688;
-}
-.feedback .feedback-form-modal .feedback-form form input[type="text"].dirty:invalid,
-.feedback .feedback-form-modal .feedback-form form textarea.dirty:invalid {
-  border-color: #E74C3C;
-  box-shadow: 0 1px 0 0 #E74C3C;
-}
-.feedback .feedback-form-modal .feedback-form form input[type="text"]:disabled,
-.feedback .feedback-form-modal .feedback-form form textarea:disabled {
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.12);
-}
-.feedback .feedback-form-modal .feedback-form form input[type="text"] ~ span.error,
-.feedback .feedback-form-modal .feedback-form form textarea ~ span.error {
-  display: inline-block;
-  position: absolute;
-  right: 0;
-  bottom: -1px;
-  color: rgba(0, 0, 0, 0.54);
-  font-size: 12px;
-  opacity: 0;
-}
-.feedback .feedback-form-modal .feedback-form form input[type="text"].dirty ~ span.error,
-.feedback .feedback-form-modal .feedback-form form textarea.dirty ~ span.error,
-.feedback .feedback-form-modal .feedback-form form input[type="text"]:focus ~ span.error,
-.feedback .feedback-form-modal .feedback-form form textarea:focus ~ span.error {
-  opacity: 1;
-}
-.feedback .feedback-form-modal .feedback-form form input[type="text"]:invalid ~ span.error,
-.feedback .feedback-form-modal .feedback-form form textarea:invalid ~ span.error {
-  color: #E74C3C;
-}
-.feedback .feedback-form-modal .feedback-form form textarea {
-  resize: none;
 }
 * {
   box-sizing: border-box;
@@ -880,6 +848,9 @@ body {
   font-family: RobotoDraft, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: rgba(0, 0, 0, 0.87);
   background-color: #fafafa;
+}
+body {
+  padding-top: 50px;
 }
 h1,
 h2,
@@ -911,10 +882,10 @@ a {
   text-decoration: none;
 }
 p a {
-  color: #3F51B5;
+  color: #00897B;
 }
 p a.dark {
-  color: #9FA8DA;
+  color: #4DB6AC;
 }
 p a:hover {
   text-decoration: underline;
@@ -980,8 +951,7 @@ section .container .summary p span {
 }
 .cards-list {
   display: flex;
-  justify-content: space-between;
-  margin: 0 -24px;
+  justify-content: center;
 }
 @media screen and (max-width: 930px) {
   .cards-list {
@@ -1083,4 +1053,55 @@ input[type="button"]:disabled {
 }
 .btn-flat.last {
   margin-right: -8px;
+}
+form input[type="text"],
+form textarea {
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 10px 0 8px 0;
+  color: #ffffff;
+  background: transparent none;
+  border: none;
+  outline: none !important;
+  box-shadow: none;
+  border-bottom: 1px solid #e1e1e1;
+  font-weight: 300;
+  border-radius: 0;
+}
+form input[type="text"]:focus,
+form textarea:focus {
+  border-bottom: 1px solid #009688;
+  box-shadow: 0 1px 0 0 #009688;
+}
+form input[type="text"].dirty:invalid,
+form textarea.dirty:invalid {
+  border-color: #E74C3C;
+  box-shadow: 0 1px 0 0 #E74C3C;
+}
+form input[type="text"]:disabled,
+form textarea:disabled {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.12);
+}
+form input[type="text"] ~ span.error,
+form textarea ~ span.error {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+  opacity: 0;
+}
+form input[type="text"].dirty ~ span.error,
+form textarea.dirty ~ span.error,
+form input[type="text"]:focus ~ span.error,
+form textarea:focus ~ span.error {
+  opacity: 1;
+}
+form input[type="text"]:invalid ~ span.error,
+form textarea:invalid ~ span.error {
+  color: #E74C3C;
+}
+form textarea {
+  resize: none;
 }
