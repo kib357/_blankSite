@@ -735,9 +735,6 @@ i.tooltip:hover::after {
   -o-transition: border-color 0.3s linear;
   transition: border-color 0.3s linear;
 }
-.technologies {
-  background-color: #fff;
-}
 .technologies img {
   margin-bottom: 48px;
 }
