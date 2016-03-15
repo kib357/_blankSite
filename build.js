@@ -6,6 +6,7 @@ var fs = require('fs');
 var hbs = require('handlebars');
 var wss = null;
 
+var defaultLocale = 'ru';
 var dev = process.argv[2] == 'dev';
 
 var htmlFiles = ['index', 'platform', 'pricing'];
@@ -48,7 +49,7 @@ var reloadClient = function () {
 }
 
 var compileHTML = function () {
-    var locales = ['en', 'ru'];
+    var locales = ['ru', 'en'];
     locales.forEach(function (lang, index) {
         var partialsBase = './src/partials/';
         var loadPartials = function (path) {
@@ -83,8 +84,8 @@ var compileHTML = function () {
         });
 
         //Writing HTML
-        var workingDir = './dist/' + (lang === 'en' ? '' : lang + '/');
-        if (lang !== 'en' && !fs.existsSync(workingDir)) {
+        var workingDir = './dist/' + (lang === defaultLocale ? '' : lang + '/');
+        if (lang !== defaultLocale && !fs.existsSync(workingDir)) {
             fs.mkdirSync(workingDir);
         }
         try {
